@@ -1,36 +1,33 @@
-const Utility = require('./Utility');
 
-test('sortArray: should sort array of integers', () => {
-  expect(Utility.sortArray([3, 1, 2])).toEqual([1, 2, 3]);
-  expect(() => Utility.sortArray("string")).toThrow("Введен не массив");
+const { factorial, power, sin, cos, ln, f } = require('./Utility');
+
+// Модульный тест
+test('factorial()', () => {
+  expect(factorial(0)).toBe(1);
+  expect(factorial(5)).toBe(120);
+  expect(() => factorial(-1)).toThrow("Факториал только для положительных чисел");
 });
-test('isPalindrome', () => {
-  expect(Utility.isPalindrome("A man, a plan, a canal: Panama")).toBe(true);
-  expect(Utility.isPalindrome("hello")).toBe(false);
+test('power()', () => {
+  expect(power(2, 3)).toBe(8);
+  expect(power(2, -3)).toBeCloseTo(0.125);
+  expect(power(2, 0)).toBe(1);
 });
-test('factorial', () => {
-  expect(Utility.factorial(5)).toBe(120);
-  expect(() => Utility.factorial(-1)).toThrow("Ошибка факториала");
-})
-test('subStrSearch', () => {
-  expect(Utility.subStrSearch('hello', 'hel')).toBe(true);
-  expect(Utility.subStrSearch('hello', 'name')).toBe(false);
+test('sin', () => {
+  expect(sin(0)).toBeCloseTo(0);
+  expect(sin(Math.PI / 2)).toBeCloseTo(1);
+  expect(sin(Math.PI)).toBeCloseTo(0);
 });
-test('isPrime', () => {
-  expect(Utility.isPrime(11)).toBe(true);
-  expect(Utility.isPrime(4)).toBe(false);
+test('cos', () => {
+  expect(cos(0)).toBeCloseTo(1);
+  expect(cos(Math.PI / 2)).toBeCloseTo(0);
+  expect(cos(Math.PI)).toBeCloseTo(-1);
 });
-test('fibonacci', () => {
-  expect(Utility.fibonacci(6)).toBe(8);
-  expect(() => Utility.fibonacci(-1)).toThrow("Введеное число не интегрируется");
+test('ln', () => {
+  expect(ln(1)).toBeCloseTo(0);
+  expect(() => ln(-1)).toThrow("Логарифм только для положительных чисел");
 });
-test('reverseNumber', () => {
-  expect(Utility.reverseNumber(123)).toBe(321);
-  expect(Utility.reverseNumber(-123)).toBe(-321);
-  expect(Utility.reverseNumber(123456789)).toBe(987654321);
-  expect(() => Utility.reverseNumber('123')).toThrow("Введено не число");
-});
-test('toRoman', () => {
-  expect(Utility.toRoman(1987)).toBe("MCMLXXXVII");
-  expect(() => Utility.toRoman(4000)).toThrow("Число не в рамках 1-3999");
+// Интеграционный тест
+test('f(x)', () => {
+  expect(f(-1)).toBeNaN();
+  expect(f(1)).toBeCloseTo(0.5463024898437906);
 });
