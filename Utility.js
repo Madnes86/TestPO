@@ -63,3 +63,4 @@ function f(x) {
 }
 
 module.exports = { factorial, power, sin, cos, ln, f }; 
+a = 0
