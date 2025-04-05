@@ -4,7 +4,7 @@ const { factorial, power, sin, cos, ln, f } = require('./Utility');
 // Модульный тест
 test('factorial()', () => {
   expect(factorial(0)).toBe(1);
-  expect(factorial(3)).toBe(120);
+  expect(factorial(5)).toBe(120);
   expect(() => factorial(-1)).toThrow("Факториал только для положительных чисел");
 });
 test('power()', () => {
@@ -29,5 +29,5 @@ test('ln', () => {
 // Интеграционный тест
 test('f(x)', () => {
   expect(f(-1)).toBeNaN();
-  expect(f(2)).toBeCloseTo(0.5463024898437906);
+  expect(f(1)).toBeCloseTo(0.5463024898437906);
 });
